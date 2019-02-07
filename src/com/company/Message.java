@@ -5,9 +5,9 @@ package com.company;
  */
 public class Message
 {
-    private long num;
-    private String message;
-    private long time;
+    public long num;
+    public String message;
+    public long time;
 
     public Message(long n, String m, long t)
     {

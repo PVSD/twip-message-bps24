@@ -9,11 +9,6 @@ public class MessageList
 {
     public void add(Message m)
     {
-        
-    }
-
-    public void move(int position, MessageList ml)
-    {
 
     }
 
