@@ -14,6 +14,7 @@ public class Main
         {
             System.out.println("Enter 1: To Create a new Chat\nEnter 2: Send a Message in a Chat\nEnter 3: Check Messages\nEnter 4: Exit");
             u=k.next();
+            if(u.equalsIgnoreCase("exit"))
             if(Integer.parseInt(u)==1) Main.createChat();
             else if(Integer.parseInt(u)==2) Main.sendMessage();
             else if(Integer.parseInt(u)==3) Main.checkmessages();
@@ -50,13 +51,26 @@ public class Main
 
     public static void checkmessages()
     {
-        System.out.println("Enter the chat number you want to check");
-        int f = k.nextInt()-1;
-        List list = (List)a.get(f);
-        for(int i=0;i<list.size();i++)
+        System.out.println("Enter the chat number you want to check\nEnter 0 to see all the chats you have\nEnter EXIT to return");
+        String s1 = k.next();
+        if(s1.equalsIgnoreCase("Exit")) return;
+        int f = Integer.parseInt(s1)-1;
+        if(f<0)
         {
-            Message message = (Message)list.get(i);
-            System.out.println(message.num + ":" + message.message + " (Sent at " + message.time + ")");
+            if(a.size()==0)
+                System.out.println("You have no chats!\n");
+            else for(int i=0;i<a.size();i++)
+                System.out.println("Chat " + (i+1));
+            Main.checkmessages();
+        }
+        if(f>=0)
+        {
+            List list = (List)a.get(f);
+            for(int i=0;i<list.size();i++)
+            {
+                Message message = (Message)list.get(i);
+                System.out.println(message.num + ":" + message.message + " (Sent at " + message.time + ")");
+            }
         }
         System.out.println();
     }
